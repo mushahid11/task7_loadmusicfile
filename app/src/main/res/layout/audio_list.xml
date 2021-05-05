@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="1dp">
+
+        <ImageView
+            android:id="@+id/audio_thumbnail"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:background="@mipmap/audio_icon"/>
+
+        <TextView
+            android:text="videio_53542367328-3663"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="25sp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:text="10:00"
+            android:id="@+id/duration"
+            android:layout_width="wrap_content"
+            android:layout_height="25sp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="30dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+
+</RelativeLayout>
