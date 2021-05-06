@@ -18,9 +18,12 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.miczon.task7_loadmusicfile.ExoPlayerFragment;
 import com.miczon.task7_loadmusicfile.MainActivity;
 import com.miczon.task7_loadmusicfile.R;
 import com.miczon.task7_loadmusicfile.adapter.VideoAdapter;
@@ -29,14 +32,20 @@ import com.miczon.task7_loadmusicfile.model.VideoModel;
 import java.util.ArrayList;
 
 public class VideoFragment extends Fragment {
+
     public static ArrayList<VideoModel > videoArrayList;
     private RecyclerView recyclerView;
     public static final int PERMISSION_READ = 0;
     private DashboardViewModel dashboardViewModel;
 
+
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_video, container, false);
+
+
 
         recyclerView = root. findViewById(R.id.recycle_video);
         if (checkPermission()) {

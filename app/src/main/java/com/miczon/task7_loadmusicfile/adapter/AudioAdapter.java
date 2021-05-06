@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
 import android.media.ThumbnailUtils;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,8 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.miczon.task7_loadmusicfile.ExoPlayerFragment;
 import com.miczon.task7_loadmusicfile.MainActivity;
 import com.miczon.task7_loadmusicfile.R;
 import com.miczon.task7_loadmusicfile.model.VideoModel;
@@ -28,7 +32,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.viewHolder> 
     Context context;
     ArrayList<VideoModel> videoArrayList;
     public VideoAdapter.OnItemClickListener onItemClickListener;
-
+    private FragmentTransaction fragmentTransaction;
     public AudioAdapter (Context context, ArrayList<VideoModel > videoArrayList) {
         this.context = context;
         this.videoArrayList = videoArrayList;
@@ -49,6 +53,21 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.viewHolder> 
 
         Bitmap image = coverpicture(String.valueOf(videoArrayList.get(position).getVideoUri()));
         holder.imageView.setImageBitmap(image);
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExoPlayerFragment exoPlayerFragment = new ExoPlayerFragment();
+
+                Bundle arguments = new Bundle();
+                arguments.putString( "uri" , String.valueOf(videoArrayList.get(position).getVideoUri()));
+                exoPlayerFragment.setArguments(arguments);
+                fragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_audio, exoPlayerFragment );
+                fragmentTransaction.commit();
+            }
+        });
+
     }
 
     @Override
